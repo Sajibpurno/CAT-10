@@ -16,10 +16,10 @@ const Catcard = ({ data }) => {
 
   return (
 
-    <div className="w-full max-w-sm bg-white border border-gray-200 rounded-2xl overflow-hidden shadow-md transition-all duration-300 hover:scale-[1.02] hover:shadow-xl hover:border-cyan-500 flex flex-col justify-between">
+    <div className="flex w-full max-w-sm flex-col justify-between overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-md transition-all duration-300 hover:scale-[1.02] hover:border-cyan-500 hover:shadow-xl dark:border-gray-700 dark:bg-gray-800">
       
       {/* Top Image Section */}
-      <div className="relative w-full h-56 bg-gray-100">
+      <div className="relative h-56 w-full bg-gray-100 dark:bg-gray-900">
         <img 
           src={petImageUrl || "https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba"} 
           alt={petName} 
@@ -49,31 +49,31 @@ const Catcard = ({ data }) => {
         {/* Main Info */}
         <div>
           
-          <h2 className="text-gray-800 text-2xl font-bold tracking-wide mb-1">
+          <h2 className="mb-1 text-2xl font-bold tracking-wide text-gray-800 dark:text-white">
             {petName}
           </h2>
           
-          <p className="text-gray-500 text-sm font-medium">
+          <p className="text-sm font-medium text-gray-500 dark:text-gray-400">
             {breed || "Unknown Breed"} • {age} years old • {gender}
           </p>
         </div>
 
         
-        <div className="space-y-2 pt-3 border-t border-gray-100">
+        <div className="space-y-2 border-t border-gray-100 pt-3 dark:border-gray-700">
           
-          <div className="flex items-center gap-2 text-gray-600 text-sm">
+          <div className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-300">
             <FaMapMarkerAlt className="text-pink-500 text-xs shrink-0" />
             <span className="truncate">{location}</span>
           </div>
 
           {/* Adoption Fee */}
-          <div className="flex items-center gap-1.5 text-gray-600 text-sm font-semibold">
+          <div className="flex items-center gap-1.5 text-sm font-semibold text-gray-600 dark:text-gray-300">
             <FaDollarSign className="text-cyan-600 text-xs shrink-0" />
             <span>
               {Number(adoptionFee) === 0 ? (
                 <span className="text-emerald-600 font-bold">Free Adoption</span>
               ) : (
-                <span className="text-gray-700">{adoptionFee} adoption fee</span>
+                <span className="text-gray-700 dark:text-gray-200">{adoptionFee} adoption fee</span>
               )}
             </span>
           </div>
@@ -84,7 +84,7 @@ const Catcard = ({ data }) => {
           
           <button 
             type="button" 
-            className="w-full bg-gray-100 hover:bg-cyan-500 hover:text-white text-gray-700 text-sm font-semibold py-3 px-4 rounded-xl transition duration-200 border border-gray-200/50"
+            className="w-full rounded-xl border border-gray-200/50 bg-gray-100 px-4 py-3 text-sm font-semibold text-gray-700 transition duration-200 hover:bg-cyan-500 hover:text-white dark:border-gray-600 dark:bg-gray-700 dark:text-gray-200"
           >
             View Details
           </button>

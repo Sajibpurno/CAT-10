@@ -3,10 +3,11 @@
 import Link from "next/link";
 import { useState } from "react";
 import { BiLogIn } from "react-icons/bi";
-import { FaPaw, FaHome, FaSearch, FaPlus, FaCat } from "react-icons/fa";
+import { FaHome, FaSearch, FaPlus, FaCat } from "react-icons/fa";
 import { HiMenuAlt3, HiX } from "react-icons/hi";
 import { IoChevronDown } from "react-icons/io5";
 import { MdDashboard, MdLogout } from "react-icons/md";
+import ThemeToggle from "./ThemeToggle";
 
 const centerNavLinks = [
   { href: "/", label: "Home", icon: FaHome },
@@ -58,13 +59,12 @@ const Navbar = () => {
         />
       )}
 
-      {/* Dashboard sidebar — desktop dropdown + mobile menu */}
       <aside
-        className={`fixed top-0 left-0 z-50 flex h-full w-72 flex-col bg-[#0a1628] text-white transition-transform duration-300 ${
+        className={`fixed top-0 left-0 z-50 flex h-full w-72 flex-col border-r border-gray-200 bg-white text-gray-900 transition-transform duration-300 dark:border-white/10 dark:bg-[#0a1628] dark:text-white ${
           sidebarOpen ? "translate-x-0" : "-translate-x-full"
         }`}
       >
-        <div className="flex items-center justify-between border-b border-white/10 px-6 py-5">
+        <div className="flex items-center justify-between border-b border-gray-200 px-6 py-5 dark:border-white/10">
           <div className="flex items-center gap-3">
             <div className="flex h-10 w-10 items-center justify-center rounded-full bg-yellow-400">
               <MdDashboard className="text-lg text-[#081224]" />
@@ -74,7 +74,7 @@ const Navbar = () => {
           <button
             type="button"
             onClick={closeSidebar}
-            className="rounded-lg p-2 text-gray-300 hover:bg-white/10 hover:text-white"
+            className="rounded-lg p-2 text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-white/10 dark:hover:text-white"
             aria-label="Close sidebar"
           >
             <HiX className="text-xl" />
@@ -87,20 +87,20 @@ const Navbar = () => {
               <Link
                 href={href}
                 onClick={closeSidebar}
-                className="flex items-center gap-3 rounded-lg px-4 py-3 text-gray-300 transition hover:bg-white/10 hover:text-white"
+                className="flex items-center gap-3 rounded-lg px-4 py-3 text-gray-600 transition hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-white/10 dark:hover:text-white"
               >
-                <Icon className="text-yellow-400" />
+                <Icon className="text-yellow-500 dark:text-yellow-400" />
                 {label}
               </Link>
             </li>
           ))}
         </ul>
 
-        <div className="border-t border-white/10 p-4">
+        <div className="border-t border-gray-200 p-4 dark:border-white/10">
           <button
             type="button"
             onClick={closeSidebar}
-            className="flex w-full items-center gap-3 rounded-lg px-4 py-3 text-red-400 hover:bg-red-500/10"
+            className="flex w-full items-center gap-3 rounded-lg px-4 py-3 text-red-500 hover:bg-red-50 dark:text-red-400 dark:hover:bg-red-500/10"
           >
             <MdLogout />
             Logout
@@ -108,50 +108,49 @@ const Navbar = () => {
         </div>
       </aside>
 
-      <nav className="sticky top-0 z-30 border-b border-white/10 bg-[#081224]/95 backdrop-blur-md">
+      <nav className="sticky top-0 z-30 border-b border-gray-200 bg-white/95 text-gray-900 backdrop-blur-md dark:border-white/10 dark:bg-[#081224]/95 dark:text-white">
         <div className="container relative mx-auto px-4 sm:px-6">
           <div className="flex h-16 items-center justify-between lg:grid lg:grid-cols-[1fr_auto_1fr] lg:gap-2">
-            {/* Left — logo + name */}
             <Link href="/" className="flex items-center gap-2">
               <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-yellow-400 shadow-md shadow-yellow-400/20">
                 <FaCat className="text-lg text-[#081224]" />
               </div>
-              <h1 className="text-base font-bold tracking-wide text-white sm:text-xl">
-                Cat<span className="text-yellow-400">-10</span>
+              <h1 className="text-base font-bold tracking-wide sm:text-xl">
+                Cat<span className="text-yellow-500 dark:text-yellow-400">-10</span>
               </h1>
             </Link>
 
-            {/* Middle — desktop only */}
             <div className="hidden items-center justify-center gap-6 lg:flex">
               {centerNavLinks.map(({ href, label, icon: Icon }) => (
                 <Link
                   key={href}
                   href={href}
-                  className="flex items-center gap-2 text-sm text-gray-300 transition hover:text-white"
+                  className="flex items-center gap-2 text-sm text-gray-600 transition hover:text-gray-900 dark:text-gray-300 dark:hover:text-white"
                 >
-                  <Icon className="text-yellow-400/80" />
+                  <Icon className="text-yellow-500 dark:text-yellow-400/80" />
                   {label}
                 </Link>
               ))}
             </div>
 
-            {/* Right — desktop: dropdown */}
-            <div className="hidden items-center justify-end lg:flex">
+            <div className="hidden items-center justify-end gap-3 lg:flex">
+              <ThemeToggle />
+
               {user ? (
                 <div className="relative">
                   <button
                     type="button"
                     onClick={() => setDropdownOpen(!dropdownOpen)}
-                    className="flex items-center gap-2 rounded-full py-1 pl-1 pr-2 transition hover:bg-white/5"
+                    className="flex items-center gap-2 rounded-full py-1 pl-1 pr-2 transition hover:bg-gray-100 dark:hover:bg-white/5"
                   >
                     <img
                       src="https://i.ibb.co/4pDNDk1/avatar.png"
                       alt="user"
                       className="h-9 w-9 rounded-full border-2 border-yellow-400 object-cover"
                     />
-                    <span className="text-sm font-medium text-white">Moncy</span>
+                    <span className="text-sm font-medium">Moncy</span>
                     <IoChevronDown
-                      className={`text-white transition-transform duration-200 ${
+                      className={`transition-transform duration-200 ${
                         dropdownOpen ? "rotate-180" : ""
                       }`}
                     />
@@ -165,11 +164,11 @@ const Navbar = () => {
                         className="fixed inset-0 z-40"
                         onClick={() => setDropdownOpen(false)}
                       />
-                      <div className="absolute right-0 z-50 mt-2 w-48 overflow-hidden rounded-xl border border-white/10 bg-[#0f172a] shadow-xl">
+                      <div className="absolute right-0 z-50 mt-2 w-48 overflow-hidden rounded-xl border border-gray-200 bg-white shadow-xl dark:border-white/10 dark:bg-[#0f172a]">
                         <button
                           type="button"
                           onClick={openDashboardSidebar}
-                          className="flex w-full items-center gap-2 px-4 py-3 text-sm text-gray-200 transition hover:bg-yellow-400 hover:text-black"
+                          className="flex w-full items-center gap-2 px-4 py-3 text-sm text-gray-700 transition hover:bg-yellow-400 hover:text-black dark:text-gray-200"
                         >
                           <MdDashboard className="text-lg" />
                           Dashboard
@@ -177,7 +176,7 @@ const Navbar = () => {
                         <button
                           type="button"
                           onClick={() => setDropdownOpen(false)}
-                          className="flex w-full items-center gap-2 px-4 py-3 text-sm text-red-400 transition hover:bg-red-500 hover:text-white"
+                          className="flex w-full items-center gap-2 px-4 py-3 text-sm text-red-500 transition hover:bg-red-50 hover:text-red-600 dark:text-red-400 dark:hover:bg-red-500 dark:hover:text-white"
                         >
                           <MdLogout className="text-lg" />
                           Logout
@@ -190,7 +189,7 @@ const Navbar = () => {
                 <div className="flex items-center gap-2">
                   <button
                     type="button"
-                    className="flex items-center gap-1 rounded-full border border-yellow-400 px-4 py-2 text-sm font-semibold text-yellow-400 transition hover:bg-yellow-400 hover:text-black"
+                    className="flex items-center gap-1 rounded-full border border-yellow-400 px-4 py-2 text-sm font-semibold text-yellow-600 transition hover:bg-yellow-400 hover:text-black dark:text-yellow-400"
                   >
                     <BiLogIn />
                     Login
@@ -205,19 +204,19 @@ const Navbar = () => {
               )}
             </div>
 
-            {/* Right — mobile: avatar + name + hamburger */}
             {user && (
               <div className="flex items-center gap-2 lg:hidden">
+                <ThemeToggle />
                 <img
                   src="https://i.ibb.co/4pDNDk1/avatar.png"
                   alt="user"
                   className="h-8 w-8 rounded-full border-2 border-yellow-400 object-cover"
                 />
-                <span className="text-sm font-medium text-white">Moncy</span>
+                <span className="text-sm font-medium">Moncy</span>
                 <button
                   type="button"
                   onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                  className="rounded-lg p-2 text-white hover:bg-white/10"
+                  className="rounded-lg p-2 hover:bg-gray-100 dark:hover:bg-white/10"
                   aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
                 >
                   {mobileMenuOpen ? (
@@ -230,7 +229,6 @@ const Navbar = () => {
             )}
           </div>
 
-          {/* Mobile dropdown menu */}
           {mobileMenuOpen && user && (
             <>
               <button
@@ -239,16 +237,16 @@ const Navbar = () => {
                 className="fixed inset-0 z-40 bg-black/40 lg:hidden"
                 onClick={closeMobileMenu}
               />
-              <div className="absolute right-4 top-[calc(100%+4px)] z-50 w-52 overflow-hidden rounded-xl border border-white/10 bg-[#0f172a] shadow-xl lg:hidden">
+              <div className="absolute right-4 top-[calc(100%+4px)] z-50 w-52 overflow-hidden rounded-xl border border-gray-200 bg-white shadow-xl lg:hidden dark:border-white/10 dark:bg-[#0f172a]">
                 {mobileMenuLinks.map((item) =>
                   item.action === "link" ? (
                     <Link
                       key={item.label}
                       href={item.href}
                       onClick={closeMobileMenu}
-                      className="flex items-center gap-3 px-4 py-3.5 text-sm text-gray-200 transition hover:bg-white/10 hover:text-white"
+                      className="flex items-center gap-3 px-4 py-3.5 text-sm text-gray-700 transition hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-white/10 dark:hover:text-white"
                     >
-                      <item.icon className="text-lg text-yellow-400" />
+                      <item.icon className="text-lg text-yellow-500 dark:text-yellow-400" />
                       {item.label}
                     </Link>
                   ) : (
@@ -258,11 +256,11 @@ const Navbar = () => {
                       onClick={() => handleMobileAction(item.action)}
                       className={`flex w-full items-center gap-3 px-4 py-3.5 text-sm transition ${
                         item.action === "logout"
-                          ? "text-red-400 hover:bg-red-500/10"
-                          : "text-gray-200 hover:bg-yellow-400 hover:text-black"
+                          ? "text-red-500 hover:bg-red-50 dark:text-red-400 dark:hover:bg-red-500/10"
+                          : "text-gray-700 hover:bg-yellow-400 hover:text-black dark:text-gray-200"
                       }`}
                     >
-                      <item.icon className="text-lg text-yellow-400" />
+                      <item.icon className="text-lg text-yellow-500 dark:text-yellow-400" />
                       {item.label}
                     </button>
                   )

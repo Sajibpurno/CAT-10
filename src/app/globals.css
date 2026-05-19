@@ -1,3 +1,37 @@
 @import "tailwindcss";
 @import "@heroui/styles";
 @plugin "daisyui";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --color-surface: #f8fafc;
+  --color-surface-elevated: #ffffff;
+  --color-foreground: #0f172a;
+  --color-muted: #64748b;
+  --color-nav: #ffffff;
+  --color-nav-border: #e2e8f0;
+}
+
+.dark {
+  --color-surface: #0a1628;
+  --color-surface-elevated: #0f172a;
+  --color-foreground: #f1f5f9;
+  --color-muted: #94a3b8;
+  --color-nav: #081224;
+  --color-nav-border: rgba(255, 255, 255, 0.1);
+}
+
+html {
+  color-scheme: light;
+}
+
+html.dark {
+  color-scheme: dark;
+}
+
+body {
+  background-color: var(--color-surface);
+  color: var(--color-foreground);
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
