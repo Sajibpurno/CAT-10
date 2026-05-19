@@ -3,14 +3,14 @@
 import { useEffect } from "react";
 import { useDashboard } from "../../context/DashboardContext";
 
-const DashboardPage = () => {
+const MyRequestsPage = () => {
   const { openDashboard } = useDashboard();
 
   useEffect(() => {
-    openDashboard("listings");
+    openDashboard("requests");
   }, [openDashboard]);
 
   return null;
 };
 
-export default DashboardPage;
+export default MyRequestsPage;

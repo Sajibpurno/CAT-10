@@ -2,6 +2,7 @@ import React from 'react';
 import { getAllCatData } from '../../lib/data';
 import { FaPaw, FaMapMarkerAlt, FaDollarSign } from 'react-icons/fa';
 import Link from 'next/link';
+import { Button } from '@heroui/react';
 const HomeCatCard = async () => {
     const CatData = await getAllCatData();
     const CatSixData = CatData?.slice(0, 6);
@@ -89,12 +90,14 @@ const HomeCatCard = async () => {
                                 </div>
                         
                                 <div className="pt-2">
-                                    <button 
-                                        type="button" 
-                                        className="w-full rounded-xl border border-gray-200/50 bg-gray-100 px-4 py-3 text-sm font-semibold text-gray-700 transition duration-200 hover:bg-cyan-500 hover:text-white dark:border-gray-600 dark:bg-gray-700 dark:text-gray-200"
-                                    >
-                                        View Details
-                                    </button>
+                                <Link href={`/all-cats/${_id}`}>
+                                 <Button 
+                                        variant="outline"
+                                   className="w-full rounded-xl border border-gray-200/50 bg-gray-100 px-4 py-3 text-sm font-semibold text-gray-700 transition duration-200 hover:bg-cyan-500 hover:text-white dark:border-gray-600 dark:bg-gray-700 dark:text-gray-200"
+                                  >
+                                    View Details
+                                    </Button>
+                                   </Link>
                                 </div>
                             </div>
                         </div>

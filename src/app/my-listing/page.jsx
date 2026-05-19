@@ -3,7 +3,7 @@
 import { useEffect } from "react";
 import { useDashboard } from "../../context/DashboardContext";
 
-const DashboardPage = () => {
+const MyListingPage = () => {
   const { openDashboard } = useDashboard();
 
   useEffect(() => {
@@ -13,4 +13,4 @@ const DashboardPage = () => {
   return null;
 };
 
-export default DashboardPage;
+export default MyListingPage;

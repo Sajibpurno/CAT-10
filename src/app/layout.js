@@ -3,6 +3,8 @@ import "./globals.css";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import ThemeProvider from "../components/ThemeProvider";
+import { DashboardProvider } from "../context/DashboardContext";
+import DashboardPanel from "../components/dashboard/DashboardPanel";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -28,9 +30,12 @@ export default function RootLayout({ children }) {
     >
       <body className="flex min-h-full flex-col bg-[var(--color-surface)] text-[var(--color-foreground)]">
         <ThemeProvider>
-          <Navbar />
-          <main className="flex-1">{children}</main>
-          <Footer />
+          <DashboardProvider>
+            <Navbar />
+            <DashboardPanel />
+            <main className="flex-1">{children}</main>
+            <Footer />
+          </DashboardProvider>
         </ThemeProvider>
       </body>
     </html>
