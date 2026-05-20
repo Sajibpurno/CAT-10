@@ -11,17 +11,17 @@ import {
   TextArea,
 } from "@heroui/react";
 import { authClient } from "../../lib/auth-client";
+import { toast } from "react-toastify";
 
 const AddCatForm = () => {
   const { data: session } = authClient.useSession()
     const user = session?.user;
-    console.log(user) 
+    // console.log(user) 
 
   const onSubmit = async (e) => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
     const allCards = Object.fromEntries(formData.entries());
-    // allCards.ownerEmail = user?.email;
     console.log(allCards);
 
     const res = await fetch(`http://localhost:8000/allCards`, {
@@ -31,6 +31,10 @@ const AddCatForm = () => {
     });
     const data = await res.json();
     console.log(data);
+    if(data){
+      e.currentTarget.reset();
+      toast.success("Pet added successfully");
+    }
     return data;
   };
 
@@ -157,9 +161,11 @@ const AddCatForm = () => {
           </div>
 
           <div className="md:col-span-2">
-            <TextField name="ownerEmail" type="email">
+            <TextField name="email" isRequired>
               <Label>Owner Email</Label>
-              <Input type="email" defaultValue={user.email} className="rounded-2xl" />
+              <Input type="email" value={user?.email || ""}
+              readOnly 
+              className="rounded-2xl" />
               <FieldError />
             </TextField>
           </div>
@@ -176,7 +182,7 @@ const AddCatForm = () => {
           </div>
         </div>
 
-        <Button type="submit" variant="outline" className="w-full rounded-lg bg-cyan-500 text-white">
+        <Button type="submit" variant="outline" className="w-full rounded-lg bg-linear-to-r from-yellow-400 to-gray-400 hover:opacity-90 hover:bg-yellow-500 text-white">
           Add Pet Listing
         </Button>
       </form>

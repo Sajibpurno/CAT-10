@@ -14,14 +14,14 @@ import { Avatar } from "@heroui/react";
 
 const centerNavLinks = [
   { href: "/", label: "Home", icon: FaHome },
-  { href: "/all-cats", label: "All Cats", icon: FaSearch },
-  { href: "/add-cat", label: "Add Cat", icon: FaPlus },
+  { href: "/all-cats", label: "All Pets", icon: FaSearch },
+  { href: "/add-cat", label: "Add Pet", icon: FaPlus },
   { href: "/signup", label: "Get Start", icon: FaPlus },
 ];
 
 const mobileMenuLinks = [
   { href: "/", label: "Home", icon: FaHome, action: "link" },
-  { href: "/all-cats", label: "All Cats", icon: FaSearch, action: "link" },
+  { href: "/all-cats", label: "All Pets", icon: FaSearch, action: "link" },
   { label: "Dashboard", icon: MdDashboard, action: "dashboard" },
   { label: "Logout", icon: MdLogout, action: "logout" },
 ];
@@ -29,7 +29,7 @@ const mobileMenuLinks = [
 const Navbar = () => {
   const { data: session } = authClient.useSession()
   const user = session?.user;
-  console.log(user)   
+  // console.log(user)   
 
   // const user = true;
   const [dropdownOpen, setDropdownOpen] = useState(false);
@@ -58,9 +58,9 @@ const Navbar = () => {
               <FaCat className="text-lg text-[#081224]" />
             </div>
             <h1 className="text-base font-bold tracking-wide sm:text-xl">
-              Cat<span className="text-yellow-500 dark:text-yellow-400">-10</span>
+              Pet<span className="text-yellow-500 dark:text-yellow-400">Haven</span>
             </h1>
-          </Link>
+          </Link>   
 
           <div className="hidden items-center justify-center gap-6 lg:flex">
             {centerNavLinks.map(({ href, label, icon: Icon }) => (
@@ -132,6 +132,7 @@ const Navbar = () => {
               </div>
             ) : (
               <div className="flex items-center gap-2">
+                <Link href="/login">
                 <button
                   type="button"
                   className="flex items-center gap-1 rounded-full border border-yellow-400 px-4 py-2 text-sm font-semibold text-yellow-600 transition hover:bg-yellow-400 hover:text-black dark:text-yellow-400"
@@ -139,12 +140,15 @@ const Navbar = () => {
                   <BiLogIn />
                   Login
                 </button>
+                </Link>
+                <Link href="/signup">
                 <button
                   type="button"
                   className="rounded-full bg-yellow-400 px-4 py-2 text-sm font-semibold text-[#081224] transition hover:bg-yellow-300"
                 >
                   Get started
                 </button>
+                </Link>
               </div>
             )}
           </div>
