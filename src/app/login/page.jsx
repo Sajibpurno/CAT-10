@@ -34,7 +34,7 @@ const LoginPage = () => {
             toast.warning(error.message)
          }
          if(data){
-            toast.suc("Login Successful");
+            toast.success("Login Successful");
          }
         }
     const handleGoogleLogin =async () => {

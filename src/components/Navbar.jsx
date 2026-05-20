@@ -1,5 +1,6 @@
 "use client";
 
+import { authClient } from "../lib/auth-client";
 import Link from "next/link";
 import { useState } from "react";
 import { BiLogIn } from "react-icons/bi";
@@ -9,6 +10,7 @@ import { IoChevronDown } from "react-icons/io5";
 import { MdDashboard, MdLogout } from "react-icons/md";
 import ThemeToggle from "./ThemeToggle";
 import { useDashboard } from "../context/DashboardContext";
+import { Avatar } from "@heroui/react";
 
 const centerNavLinks = [
   { href: "/", label: "Home", icon: FaHome },
@@ -25,11 +27,11 @@ const mobileMenuLinks = [
 ];
 
 const Navbar = () => {
-  const { 
-    data: session, 
-} = authClient.useSession()
+  const { data: session } = authClient.useSession()
+  const user = session?.user;
+  console.log(user)   
 
-  const user = true;
+  // const user = true;
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const { openDashboard } = useDashboard();
@@ -78,23 +80,26 @@ const Navbar = () => {
 
             {user ? (
               <div className="relative">
+                <div className="flex items-center gap-2">
+                  <div className="flex items-center gap-2">
+                    <Avatar>
+                    <Avatar.Image alt={user.name} src={user?.image} />
+                    <Avatar.Fallback>{user.name.charAt(0)}</Avatar.Fallback>
+                  </Avatar> 
+                  <span className="text-sm font-medium">{user.name}</span>
+                  </div>
                 <button
                   type="button"
                   onClick={() => setDropdownOpen(!dropdownOpen)}
-                  className="flex items-center gap-2 rounded-full py-1 pl-1 pr-2 transition hover:bg-gray-100 dark:hover:bg-white/5"
+                  className=" rounded-full py-1 pl-1 pr-2 transition hover:bg-gray-100 dark:hover:bg-white/5"
                 >
-                  <img
-                    src="https://i.ibb.co/4pDNDk1/avatar.png"
-                    alt="user"
-                    className="h-9 w-9 rounded-full border-2 border-yellow-400 object-cover"
-                  />
-                  <span className="text-sm font-medium">Moncy</span>
                   <IoChevronDown
                     className={`transition-transform duration-200 ${
                       dropdownOpen ? "rotate-180" : ""
                     }`}
                   />
                 </button>
+                </div>
 
                 {dropdownOpen && (
                   <>
@@ -115,7 +120,7 @@ const Navbar = () => {
                       </button>
                       <button
                         type="button"
-                        onClick={() => setDropdownOpen(false)}
+                        onClick={async () => { setDropdownOpen(false); await authClient.signOut(); }}
                         className="flex w-full items-center gap-2 px-4 py-3 text-sm text-red-500 transition hover:bg-red-50 hover:text-red-600 dark:text-red-400 dark:hover:bg-red-500 dark:hover:text-white"
                       >
                         <MdLogout className="text-lg" />
@@ -138,7 +143,7 @@ const Navbar = () => {
                   type="button"
                   className="rounded-full bg-yellow-400 px-4 py-2 text-sm font-semibold text-[#081224] transition hover:bg-yellow-300"
                 >
-                  Register
+                  Get started
                 </button>
               </div>
             )}
