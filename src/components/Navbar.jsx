@@ -14,6 +14,7 @@ const centerNavLinks = [
   { href: "/", label: "Home", icon: FaHome },
   { href: "/all-cats", label: "All Cats", icon: FaSearch },
   { href: "/add-cat", label: "Add Cat", icon: FaPlus },
+  { href: "/signup", label: "Get Start", icon: FaPlus },
 ];
 
 const mobileMenuLinks = [
@@ -24,6 +25,10 @@ const mobileMenuLinks = [
 ];
 
 const Navbar = () => {
+  const { 
+    data: session, 
+} = authClient.useSession()
+
   const user = true;
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -160,6 +165,7 @@ const Navbar = () => {
                   <HiMenuAlt3 className="text-2xl" />
                 )}
               </button>
+              
             </div>
           )}
         </div>

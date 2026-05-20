@@ -27,7 +27,7 @@ const CardDetailsPage = async ({ params }) => {
       {/* Back Button */}
       <div className="max-w-6xl mx-auto mb-6">
         <Link href="/all-cats">
-        <Button className="bg-linear-to-r from-rose-400 to-cyan-400 hover:opacity-90 flex items-center gap-2 text-sm font-medium hover:underline opacity-80 hover:bg-linear-to-l hover:from-rose-400 hover:to-cyan-400 hover:hover:opacity-90">
+        <Button className="bg-linear-to-r from-yellow-400 to-gray-400 hover:opacity-90 flex items-center gap-2 text-sm font-medium hover:underline opacity-80 hover:bg-linear-to-l hover:from-yellow-400 hover:to-gray-400 hover:hover:opacity-90">
           <span>←</span> Back to All Pets
         </Button>
         </Link>
@@ -222,7 +222,7 @@ const CardDetailsPage = async ({ params }) => {
               {/* Adopt Gradient Button */}
               <button 
                 type="submit" 
-                className="w-full bg-gradient-to-r from-rose-400 to-cyan-400 hover:opacity-90 text-white font-bold py-3 px-4 rounded-xl text-sm flex items-center justify-center gap-2 shadow-lg transition duration-200 mt-2"
+                className="w-full bg-gradient-to-r from-yellow-400 to-gray-400 hover:opacity-90 text-white font-bold py-3 px-4 rounded-xl text-sm flex items-center justify-center gap-2 shadow-lg transition duration-200 mt-2"
               >
                 Adopt {pet.petName} 🐾
               </button>
