@@ -11,12 +11,11 @@ import { MdDashboard, MdLogout } from "react-icons/md";
 import ThemeToggle from "./ThemeToggle";
 import { useDashboard } from "../context/DashboardContext";
 import { Avatar } from "@heroui/react";
+import { PawPrint } from "lucide-react";
 
 const centerNavLinks = [
   { href: "/", label: "Home", icon: FaHome },
   { href: "/all-cats", label: "All Pets", icon: FaSearch },
-  { href: "/add-cat", label: "Add Pet", icon: FaPlus },
-  { href: "/signup", label: "Get Start", icon: FaPlus },
 ];
 
 const mobileMenuLinks = [
@@ -55,7 +54,7 @@ const Navbar = () => {
         <div className="flex h-16 items-center justify-between lg:grid lg:grid-cols-[1fr_auto_1fr] lg:gap-2">
           <Link href="/" className="flex items-center gap-2">
             <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-yellow-400 shadow-md shadow-yellow-400/20">
-              <FaCat className="text-lg text-[#081224]" />
+              <PawPrint className="text-lg text-[#081224]" />
             </div>
             <h1 className="text-base font-bold tracking-wide sm:text-xl">
               Pet<span className="text-yellow-500 dark:text-yellow-400">Haven</span>

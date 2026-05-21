@@ -18,18 +18,65 @@ const MyListingsContent = () => {
   useEffect(() => {
     session?.user?.email && getMyCards(session.user.email).then(setMyCards);
   }, [session?.user?.email]);
+
+  
+  const totalListings = myCards.length;
+  
+  const availableListings = myCards.filter(card => card.status === 'Available' || !card.status).length;
+  const adoptedListings = myCards.filter(card => card.status === 'Adopted').length;
+
   
   return (
     <div className="p-4 sm:p-6 max-w-7xl mx-auto">
-      <h1 className="mb-2 text-2xl font-bold text-gray-900 dark:text-white sm:text-3xl">
-        My{" "}
-        <span className="bg-linear-to-r from-yellow-400 to-gray-400 bg-clip-text text-transparent hover:opacity-95 transition-opacity cursor-pointer">
-          Listings
-        </span>
-      </h1>
-      <p className="mb-8 text-gray-600 dark:text-gray-400">
-        Your posted pets will appear here.
-      </p>
+      <div className="flex justify-between items-center mb-6">
+        <div>
+          <h1 className="mb-2 text-2xl font-bold text-gray-900 dark:text-white sm:text-3xl">
+            My{" "}
+            <span className="bg-linear-to-r from-yellow-400 to-gray-400 bg-clip-text text-transparent hover:opacity-95 transition-opacity cursor-pointer">
+              Listings
+            </span>
+          </h1>
+          <p className="text-gray-600 dark:text-gray-400">
+            Your posted pets will appear here.
+          </p>
+        </div>
+        <Link href='/add-cat'>
+          <Button 
+            type="submit" 
+            className="bg-linear-to-r from-yellow-400 to-gray-400 hover:opacity-90 text-white font-bold py-3 px-4 rounded-xl text-sm flex items-center justify-center gap-2 shadow-lg transition duration-200 mt-2"
+          >
+            <Plus/> Add New
+          </Button>
+        </Link>
+      </div>
+
+      
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-3 mb-8">
+        {/* ১. Total Listings */}
+        <div className="flex flex-col items-center justify-center p-6 rounded-2xl bg-gray-100 dark:bg-[#0f1422] border border-gray-200 dark:border-gray-800 text-center">
+          <span className="text-4xl font-bold text-pink-500 dark:text-pink-400 mb-2">
+            {totalListings}
+          </span>
+          <span className="text-sm font-medium text-gray-500 dark:text-gray-400">Total Listings</span>
+        </div>
+
+        {/* ২. Available */}
+        <div className="flex flex-col items-center justify-center p-6 rounded-2xl bg-gray-100 dark:bg-[#0f1422] border border-gray-200 dark:border-gray-800 text-center">
+          <span className="text-4xl font-bold text-emerald-500 dark:text-emerald-400 mb-2">
+            {availableListings}
+          </span>
+          <span className="text-sm font-medium text-gray-500 dark:text-gray-400">Available</span>
+        </div>
+
+        {/* ৩. Adopted */}
+        <div className="flex flex-col items-center justify-center p-6 rounded-2xl bg-gray-100 dark:bg-[#0f1422] border border-gray-200 dark:border-gray-800 text-center">
+          <span className="text-4xl font-bold text-red-500 dark:text-red-400 mb-2">
+            {adoptedListings}
+          </span>
+          <span className="text-sm font-medium text-gray-500 dark:text-gray-400">Adopted</span>
+        </div>
+      </div>
+      
 
       {myCards.length === 0 ? (
         <div className="flex flex-col items-center justify-center rounded-2xl border border-dashed border-gray-300 bg-white/50 py-16 dark:border-gray-600 dark:bg-white/5">
@@ -69,7 +116,7 @@ const MyListingsContent = () => {
                     className="h-full w-full object-cover"
                   />
                   <span className="absolute top-3 right-3 rounded-full bg-emerald-600/90 dark:bg-emerald-900/80 px-3 py-1 text-xs font-medium text-white backdrop-blur-xs">
-                    Available
+                    {card.status || "Available"}
                   </span>
                 </div>
 
@@ -92,9 +139,9 @@ const MyListingsContent = () => {
 
                   <div className="mt-auto grid grid-cols-2 gap-2">
                     <Link href={`/all-cats/${_id}`}>
-                    <button className="flex items-center justify-center gap-1.5 rounded-lg border border-gray-300 dark:border-gray-700 bg-white dark:bg-[#161c2d] px-3 py-2 text-xs font-medium text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-800 transition">
-                      <Eye size={14} /> View
-                    </button>
+                      <button className="flex items-center justify-center gap-1.5 rounded-lg border border-gray-300 dark:border-gray-700 bg-white dark:bg-[#161c2d] px-3 py-2 text-xs font-medium text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-800 transition">
+                        <Eye size={14} /> View
+                      </button>
                     </Link>
 
                     {/* Edit */}
@@ -106,8 +153,6 @@ const MyListingsContent = () => {
 
                     {/* delete part */}
                     <DeleteAlert card={card}/>
-                    
-
                   </div>
                 </div>
               </div>
