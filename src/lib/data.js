@@ -12,3 +12,10 @@ export const getCatDetailsData = async(id)=>{
     console.log(data)
     return data;
 }
+
+// api/data.js e add koro
+export const getMyCards = async (email) => {
+    const res = await fetch(`http://localhost:8000/myCards?email=${email}`)
+    const data = await res.json();
+    return data;
+}
