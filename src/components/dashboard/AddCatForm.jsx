@@ -37,7 +37,7 @@ const AddCatForm = () => {
   return (
     <div>
       <h1 className="mb-6 text-2xl font-bold text-gray-900 dark:text-white sm:text-3xl">
-        Add Pet
+        Add Pets
       </h1>
       <form className="space-y-8" onSubmit={onSubmit}>
         <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
