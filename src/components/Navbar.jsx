@@ -56,9 +56,26 @@ const Navbar = () => {
             <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-yellow-400 shadow-md shadow-yellow-400/20">
               <PawPrint className="text-lg text-[#081224]" />
             </div>
-            <h1 className="text-base font-bold tracking-wide sm:text-xl">
-              Pet<span className="text-yellow-500 dark:text-yellow-400">Haven</span>
-            </h1>
+
+            <h1 className="text-base font-bold tracking-wide sm:text-xl text-slate-900 dark:text-white">
+  
+  <span 
+    className="bg-gradient-to-r from-white via-slate-300 to-yellow-400 bg-[length:200%_auto] bg-clip-text text-transparent animate-[shine_5s_linear_infinite]"
+    style={{
+      animation: 'shine 4s linear infinite'
+    }}
+  >
+  PetHaven
+  </span>
+
+  <style dangerouslySetInnerHTML={{__html: `
+    @keyframes shine {
+      0% { background-position: 0% center; }
+      50% { background-position: 100% center; }
+      100% { background-position: 0% center; }
+    }
+  `}} />
+</h1>
           </Link>   
 
           <div className="hidden items-center justify-center gap-6 lg:flex">

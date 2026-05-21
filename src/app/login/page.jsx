@@ -42,11 +42,6 @@ const LoginPage = () => {
     provider: "google",
     });
 }
-    const handleGithubLogin =async () => {
-    await authClient.signIn.social({
-    provider: "github",
-    });
-}
     return (
         <div className="min-h-screen flex items-center justify-center p-5 sm:p-8 relative bg-[#FAF9F6] dark:bg-[#0a1628]">
 
@@ -149,21 +144,15 @@ const LoginPage = () => {
                 </div>
 
                 {/* Social Logins */}
-                <div className="grid grid-cols-2 gap-3 mb-2">
+                <div className="flex mb-2">
                     <button onClick={handleGoogleLogin}
                         type="button"
-                        className="flex items-center justify-center gap-2 py-3 border border-[#1A1A1A]/12 dark:border-white/20 rounded-2xl hover:border-yellow-500 hover:ring-2 hover:ring-yellow-500/20 hover:bg-[#1A1A1A]/[0.02] dark:hover:bg-white/10 transition-all text-sm font-semibold text-[#1A1A1A] dark:text-gray-200 cursor-pointer"
+                        className="flex items-center justify-center gap-2 py-2 border border-[#1A1A1A]/12 w-full dark:border-white/20 rounded-2xl hover:border-yellow-500 hover:ring-2 hover:ring-yellow-500/20 hover:bg-[#1A1A1A]/[0.02] dark:hover:bg-white/10 transition-all text-sm font-semibold text-[#1A1A1A] dark:text-gray-200 cursor-pointer"
                     >
                         <FcGoogle size={20} />
                         Google
                     </button>
-                    <button onClick={handleGithubLogin}
-                        type="button"
-                        className="flex items-center justify-center gap-2 py-3 border border-[#1A1A1A]/12 dark:border-white/20 rounded-2xl hover:border-yellow-500 hover:ring-2 hover:ring-yellow-500/20 hover:bg-[#1A1A1A]/[0.02] dark:hover:bg-white/10 transition-all text-sm font-semibold text-[#1A1A1A] dark:text-gray-200 cursor-pointer"
-                    >
-                        <FaGithub size={20} />
-                        Github
-                    </button>
+                    
                 </div>
             </div>
         </div>
