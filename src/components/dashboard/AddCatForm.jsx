@@ -11,11 +11,12 @@ import {
   TextArea,
 } from "@heroui/react";
 import { authClient } from "../../lib/auth-client";
+import { toast } from "react-toastify";
 
 const AddCatForm = () => {
   const { data: session } = authClient.useSession()
     const user = session?.user;
-    console.log(user) 
+    console.log("user data", user) 
 
   const onSubmit = async (e) => {
     e.preventDefault();
@@ -24,12 +25,16 @@ const AddCatForm = () => {
     // allCards.ownerEmail = user?.email;
     console.log(allCards);
 
-    const res = await fetch(`http://localhost:8000/allCards`, {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_BETTER_AUTH_URL}/allCards`, {
       method: "POST",
       headers: { "content-type": "application/json" },
       body: JSON.stringify(allCards),
     });
     const data = await res.json();
+    if(data){
+      toast.success("Pet Added Successfully")
+      // form.reset();
+    }
     console.log(data);
     return data;
   };
@@ -157,9 +162,9 @@ const AddCatForm = () => {
           </div>
 
           <div className="md:col-span-2">
-            <TextField name="ownerEmail" type="email">
+            <TextField defaultValue={user?.email}  name="ownerEmail" type="email">
               <Label>Owner Email</Label>
-              <Input type="email" defaultValue={user.email} className="rounded-2xl" />
+              <Input type="email" readOnly  className="rounded-2xl" />
               <FieldError />
             </TextField>
           </div>

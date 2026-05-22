@@ -12,7 +12,7 @@ const MyRequestsContent = () => {
 
   useEffect(() => {
     if (user?.email) {
-      fetch(`http://localhost:8000/adopting?email=${user.email}`)
+      fetch(`${process.env.NEXT_PUBLIC_BETTER_AUTH_URL}/adopting?email=${user.email}`)
         .then(res => res.json())
         .then(result => {
           setData(result);

@@ -9,7 +9,7 @@ export function DeleteAlert({card}) {
 
     // server a delete api baniye ekeane ese seta connect korchi-
     const handleDelete= async ()=>{
-     const res = await fetch(`http://localhost:8000/allCards/${_id}`,{
+     const res = await fetch(`${process.env.NEXT_PUBLIC_BETTER_AUTH_URL}/allCards/${_id}`,{
         method: "DELETE",
         headers:{
             'content-type': 'application/json'

@@ -15,9 +15,9 @@ const HomeCatCard = async () => {
         <div className="container mx-auto my-20 px-6">
             <div className="flex justify-between items-center">
             
-            <h1 className="mb-8 text-4xl font-bold bg-linear-to-r from-yellow-400 to-gray-400 hover:opacity-90">All Pets</h1>
+            <h1 className="mb-8 text-4xl font-bold text-cyan-400">All Pets</h1>
             <Link href="/all-cats">
-                <button className="bg-linear-to-r from-yellow-400 to-gray-400 hover:opacity-90 hover:bg-linear-to-l hover:from-yellow-400 hover:to-gray-400 text-white px-4 py-2 rounded-md">View All</button>
+                <button className="bg-linear-to-r from-cyan-400 to-gray-400 hover:opacity-90 hover:bg-linear-to-l hover:from-cyan-400 hover:to-gray-400 text-white px-4 py-2 rounded-md">View All</button>
             </Link>
             </div>
 

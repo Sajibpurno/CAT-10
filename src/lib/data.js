@@ -1,21 +1,26 @@
+// import { headers } from "next/headers";
+// import { auth } from "./auth";
+
 export const getAllCatData = async()=>{
-    const res = await fetch(`http://localhost:8000/allCards`)
+    const res = await fetch(`${process.env.NEXT_PUBLIC_BETTER_AUTH_URL}/allCards`)
     const data = await res.json();
     console.log(data)
     return data;
 }
 
 // all-cat details
-export const getCatDetailsData = async(id)=>{
-    const res = await fetch(`http://localhost:8000/allCards/${id}`)
-    const data = await res.json();
-    console.log(data)
-    return data;
-}
+// export const getCatDetailsData = async(id)=>{
+//  console.log(token);
+ 
+//     const res = await fetch(`${process.env.PUBLIC_BETTER_AUTH_URL}/allCards/${id}`)
+//     const data = await res.json();
+//     console.log(data)
+//     return data;
+// }
 
 // api/data.js e add koro
 export const getMyCards = async (email) => {
-    const res = await fetch(`http://localhost:8000/myCards?email=${email}`)
+    const res = await fetch(`${process.env.NEXT_PUBLIC_BETTER_AUTH_URL}/myCards?email=${email}`)
     const data = await res.json();
     return data;
 }
@@ -27,7 +32,7 @@ export const getFilteredCatData = async (searchParams) => {
   const sort = searchParams?.sort || '';
 
   const res = await fetch(
-    `http://localhost:8000/allCards?search=${search}&species=${species}&sort=${sort}`,
+    `${process.env.NEXT_PUBLIC_BETTER_AUTH_URL}/allCards?search=${search}&species=${species}&sort=${sort}`,
     { cache: 'no-store' }
   );
   

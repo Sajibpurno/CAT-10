@@ -27,7 +27,7 @@ const AdoptCard = ({ pet }) => {
     console.log("Sending Data:", allAdoptionData);
 
     try {
-      const res = await fetch(`http://localhost:8000/adopting`, {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_BETTER_AUTH_URL}/adopting`, {
         method: "POST",
         headers: { "content-type": "application/json" },
         body: JSON.stringify(allAdoptionData),

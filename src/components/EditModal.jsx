@@ -33,7 +33,7 @@ export function EditModal({card}) {
     // allCards.ownerEmail = user?.email;
     console.log(allCards);
 
-    const res = await fetch(`http://localhost:8000/allCards/${_id}`,{
+    const res = await fetch(`${process.env.NEXT_PUBLIC_BETTER_AUTH_URL}/allCards/${_id}`,{
             method: "PATCH",
             headers:{
                 'content-type': 'application/json'

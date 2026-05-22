@@ -1,12 +1,25 @@
-import { getCatDetailsData } from '@/lib/data';
+// import { getCatDetailsData } from '@/lib/data';
 import { Button } from '@heroui/react';
 import Link from 'next/link';
 import React from 'react';
 import AdoptCard from '../../../components/AdoptCard';
+import { auth } from '../../../lib/auth';
+import { headers } from 'next/headers';
 
 const CardDetailsPage = async ({ params }) => {
   const { id } = await params;
-  const SingleCard = await getCatDetailsData(id);
+  const {token} = await auth.api.getToken({
+   headers: await headers()
+ })
+ console.log(token);
+  
+  const res = await fetch(`${process.env.NEXT_PUBLIC_BETTER_AUTH_URL}/allCards/${id}`,{
+        headers: {
+            authorization: `Bearer ${token}`
+            
+        }
+    });
+  const SingleCard = await res.json();
 
   // Fallback data (Jodi API theke kono data miss hoy jate tor page crash na kore)
   const pet = {
