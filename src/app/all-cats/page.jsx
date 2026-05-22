@@ -14,7 +14,7 @@ const AllCatsPage = async({ searchParams }) => {
       <div className="container mx-auto my-20 px-4 sm:px-6">
         
         {/* Title and Count */}
-        <h1 className="mb-2 text-4xl font-bold bg-linear-to-r from-yellow-400 to-gray-400 hover:opacity-90">All Pets</h1>
+        <h1 className="mb-2 text-4xl font-bold bg-linear-to-r from-yellow-400 to-gray-400 bg-clip-text text-transparent hover:opacity-90">All Pets</h1>
         <p className="mb-5 text-slate-400">{CatData?.length || 0} pets available for adoption</p>
 
         {/* Filter UI */}
