@@ -11,6 +11,7 @@ const CardDetailsPage = async ({ params }) => {
   // Fallback data (Jodi API theke kono data miss hoy jate tor page crash na kore)
   const pet = {
     petName: SingleCard?.petName ,
+    petId: SingleCard?._id,
     species: SingleCard?.species ,
     breed: SingleCard?.breed ,
     age: SingleCard?.age ,

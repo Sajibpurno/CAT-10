@@ -7,6 +7,7 @@ const AdoptCard = ({ pet }) => {
   const { data: session } = authClient.useSession();
   const user = session?.user;
 
+  console.log("--- FULL PET OBJECT CHECK ---", pet);
   const onSubmit = async (e) => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
@@ -14,10 +15,10 @@ const AdoptCard = ({ pet }) => {
 
     const allAdoptionData = {
       petName: pet?.petName,
-      petId: pet?._id, 
+      petId: pet?.petId,
       userId: user?.id,
       userName: user?.name,
-      petImageUrl: pet?.petImageUrl,
+      petImageUrl: pet?.image,
       userEmail: user?.email,
       pickupDate: formFields.pickupDate,
       message: formFields.message,
