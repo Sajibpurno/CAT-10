@@ -60,7 +60,7 @@ const Navbar = () => {
             <h1 className="text-base font-bold tracking-wide sm:text-xl text-slate-900 dark:text-white">
   
   <span 
-    className="bg-gradient-to-r from-white via-slate-300 to-yellow-400 bg-[length:200%_auto] bg-clip-text text-transparent animate-[shine_5s_linear_infinite]"
+    className="bg-gradient-to-r from-yellow-400  via-slate-500 to-white  bg-[length:200%_auto] bg-clip-text text-transparent animate-[shine_5s_linear_infinite]"
     style={{
       animation: 'shine 4s linear infinite'
     }}
@@ -160,7 +160,7 @@ const Navbar = () => {
                 <Link href="/signup">
                 <button
                   type="button"
-                  className="rounded-full bg-yellow-400 px-4 py-2 text-sm font-semibold text-[#081224] transition hover:bg-yellow-300"
+                  className="rounded-full bg-linear-to-r from-yellow-400 to-gray-400 hover:opacity-90  px-4 py-2 text-sm font-semibold text-[#081224] transition hover:bg-linear-to-l hover:from-yellow-400 hover:to-gray-400"
                 >
                   Get started
                 </button>
@@ -169,15 +169,16 @@ const Navbar = () => {
             )}
           </div>
 
-          {user && (
-            <div className="flex items-center gap-2 lg:hidden">
+          {user ? (
+            <div className="flex items-center gap-1 lg:hidden">
               <ThemeToggle />
-              <img
-                src="https://i.ibb.co/4pDNDk1/avatar.png"
-                alt="user"
-                className="h-8 w-8 rounded-full border-2 border-yellow-400 object-cover"
-              />
-              <span className="text-sm font-medium">Moncy</span>
+              <div className="flex items-center gap-1">
+                    <Avatar>
+                    <Avatar.Image alt={user.name} src={user?.image} />
+                    <Avatar.Fallback>{user.name.charAt(0)}</Avatar.Fallback>
+                  </Avatar> 
+                  <span className="text-sm font-medium">{user.name}</span>
+                  </div>
               <button
                 type="button"
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
@@ -192,7 +193,27 @@ const Navbar = () => {
               </button>
               
             </div>
-          )}
+           ) : (
+              <div className="flex items-center gap-2">
+                <Link href="/login">
+                <button
+                  type="button"
+                  className="flex items-center gap-1 rounded-full border border-yellow-400 px-4 py-2 text-sm font-semibold text-yellow-600 transition hover:bg-yellow-400 hover:text-black dark:text-yellow-400"
+                >
+                  <BiLogIn />
+                  Login
+                </button>
+                </Link>
+                <Link href="/signup">
+                <button
+                  type="button"
+                  className="rounded-full bg-linear-to-r from-yellow-400 to-gray-400 hover:opacity-90  px-4 py-2 text-sm font-semibold text-[#081224] transition hover:bg-linear-to-l hover:from-yellow-400 hover:to-gray-400"
+                >
+                  Get started
+                </button>
+                </Link>
+              </div>
+            )}
         </div>
 
         {mobileMenuOpen && user && (

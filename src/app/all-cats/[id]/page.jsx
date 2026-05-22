@@ -2,6 +2,7 @@ import { getCatDetailsData } from '@/lib/data';
 import { Button } from '@heroui/react';
 import Link from 'next/link';
 import React from 'react';
+import AdoptCard from '../../../components/AdoptCard';
 
 const CardDetailsPage = async ({ params }) => {
   const { id } = await params;
@@ -161,72 +162,8 @@ const CardDetailsPage = async ({ params }) => {
               Fill out this form and the owner will review your request.
             </p>
 
-            <form className="space-y-4">
-              {/* Pet Name Input */}
-              <div>
-                <label className="block text-xs font-semibold mb-1.5 opacity-80">Pet Name</label>
-                <input 
-                  type="text" 
-                  value={pet.petName}
-                  defaultValue={pet.petName}
-                  disabled 
-                  className="w-full bg-slate-100 font-bold dark:bg-[#1F2937] text-slate-500 dark:text-slate-300 rounded-lg p-2.5 text-sm outline-none border border-slate-200 dark:border-slate-700 capitalize cursor-not-allowed"
-                />
-              </div>
+            <AdoptCard pet={pet}/>
 
-              {/* Your Name Input */}
-              <div>
-                <label className="block text-xs font-semibold mb-1.5 opacity-80">Your Name</label>
-                <div className="relative">
-                  <input 
-                    type="text" 
-                    placeholder="Your Name" 
-                    className="w-full bg-slate-50 dark:bg-[#1F2937] border border-slate-300 dark:border-slate-700 rounded-lg p-2.5 pl-8 text-sm focus:ring-2 focus:ring-cyan-500 outline-none"
-                  />
-                  <span className="absolute left-2.5 top-3 text-xs opacity-50">👤</span>
-                </div>
-              </div>
-
-              {/* Your Email Input */}
-              <div>
-                <label className="block text-xs font-semibold mb-1.5 opacity-80">Your Email</label>
-                <div className="relative">
-                  <input 
-                    type="email" 
-                    placeholder="yourmail@gmail.com" 
-                    className="w-full bg-slate-50 dark:bg-[#1F2937] border border-slate-300 dark:border-slate-700 rounded-lg p-2.5 pl-8 text-sm focus:ring-2 focus:ring-cyan-500 outline-none"
-                  />
-                  <span className="absolute left-2.5 top-3 text-xs opacity-50">✉️</span>
-                </div>
-              </div>
-
-              {/* Preferred Pickup Date */}
-              <div>
-                <label className="block text-xs font-semibold mb-1.5 opacity-80">Preferred Pickup Date</label>
-                <input 
-                  type="date" 
-                  className="w-full bg-slate-50 dark:bg-[#1F2937] border border-slate-300 dark:border-slate-700 rounded-lg p-2.5 text-sm focus:ring-2 focus:ring-cyan-500 outline-none dark:[color-scheme:dark]"
-                />
-              </div>
-
-              {/* Message to Owner */}
-              <div>
-                <label className="block text-xs font-semibold mb-1.5 opacity-80">Message to Owner</label>
-                <textarea 
-                  rows="4"
-                  placeholder={`Tell the owner why you'd be a great match for ${pet.petName}...`}
-                  className="w-full bg-slate-50 dark:bg-[#1F2937] border border-slate-300 dark:border-slate-700 rounded-lg p-2.5 text-sm focus:ring-2 focus:ring-cyan-500 outline-none resize-none"
-                ></textarea>
-              </div>
-
-              {/* Adopt Gradient Button */}
-              <button 
-                type="submit" 
-                className="w-full bg-gradient-to-r from-yellow-400 to-gray-400 hover:opacity-90 text-white font-bold py-3 px-4 rounded-xl text-sm flex items-center justify-center gap-2 shadow-lg transition duration-200 mt-2"
-              >
-                Adopt {pet.petName} 🐾
-              </button>
-            </form>
           </div>
         </div>
 

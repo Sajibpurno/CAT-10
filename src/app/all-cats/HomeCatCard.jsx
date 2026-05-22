@@ -15,13 +15,13 @@ const HomeCatCard = async () => {
         <div className="container mx-auto my-20 px-6">
             <div className="flex justify-between items-center">
             
-            <h1 className="mb-8 text-4xl font-bold text-cyan-500">All Cats</h1>
+            <h1 className="mb-8 text-4xl font-bold text-cyan-500">All Pets</h1>
             <Link href="/all-cats">
                 <button className="bg-cyan-500 text-white px-4 py-2 rounded-md">View All</button>
             </Link>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 justify-items-center md:justify-items-stretch">
                 {CatSixData.map((data) => {
                     const {
                         _id,
@@ -37,7 +37,7 @@ const HomeCatCard = async () => {
                     } = data;
 
                     return (
-                        <div key={_id} className="flex w-full max-w-sm flex-col justify-between overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-md transition-all duration-300 hover:scale-[1.02] hover:border-cyan-500 hover:shadow-xl dark:border-gray-700 dark:bg-gray-800">
+                        <div key={_id} className="flex w-full max-w-sm md:max-w-none flex-col justify-between overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-md transition-all duration-300 hover:scale-[1.02] hover:border-cyan-500 hover:shadow-xl dark:border-gray-700 dark:bg-gray-800">
                             
                             <div className="relative h-56 w-full bg-gray-100 dark:bg-gray-900">
                                 <img 

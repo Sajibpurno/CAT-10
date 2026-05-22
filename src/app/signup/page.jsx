@@ -8,6 +8,7 @@ import { authClient } from "../../lib/auth-client";
 
 const SignupPage = () => {
   const [isShowPass, setIsShowPass] = useState(false);
+  const [passwordError, setPasswordError] = useState("");    //eee
 
   const onSubmit = async (e) => {
     e.preventDefault();
@@ -15,6 +16,29 @@ const SignupPage = () => {
 
     const user = Object.fromEntries(formData.entries());
     console.log(user);
+
+    // password requrements,  eee
+   const password = user.password;
+const confirmPassword = user.confirmPassword;
+
+if (password !== confirmPassword) {
+  setPasswordError("Passwords do not match!");
+  return;
+}
+if (password.length < 6) {
+  setPasswordError("Password must be at least 6 characters long!");
+  return;
+}
+if (!/[A-Z]/.test(password)) {
+  setPasswordError("Password must contain at least one uppercase letter!");
+  return;
+}
+if (!/[a-z]/.test(password)) {
+  setPasswordError("Password must contain at least one lowercase letter!");
+  return;urn;
+}  
+// eeee
+
     e.currentTarget.reset(); // Submit hoye gele form clear korar jonno
 
     // main setup for signup
@@ -27,10 +51,10 @@ const SignupPage = () => {
     console.log(data, error);
 
     if (data) {
-      redirect("/login");
+      redirect("/");
     }
     if (error) {
-      alert("signUp faild");
+      alert("SignUp failed");
     }
   };
 
@@ -123,13 +147,21 @@ const SignupPage = () => {
             >
               {isShowPass ? <FaEye /> : <FaRegEyeSlash />}
             </span>
+
+            {/* eee */}
+            {passwordError && (
+            <p className="text-xs text-red-500 font-semibold mt-1.5 ml-1 animate-pulse">
+              ⚠️ {passwordError}
+            </p>
+            )}
+{/* eeeee */}
           </div>
           <div className="relative">
             <label className="block text-sm font-semibold text-[#1A1A1A] dark:text-gray-200 mb-1.5 ml-0.5">
             Confirm Password
             </label>
             <input
-              name="password" // MUST ADD THIS
+              name="confirmPassword" // MUST ADD THIS
               type={isShowPass ? "text" : "password"}
               placeholder="••••••••"
               required

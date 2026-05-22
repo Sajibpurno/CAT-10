@@ -1,10 +1,11 @@
 import React from 'react';
 import { Separator } from "@heroui/react";
 import { Search, MapPin, PawPrint, DollarSign, Calendar } from 'lucide-react';
+import Link from 'next/link';
 
 const Banner = () => {
   return (
-    <div className="relative text-white flex flex-col items-center justify-between gap-5 min-h-[600px] sm:h-[600px] w-full pt-16 pb-8 px-4 sm:px-6 lg:px-8 overflow-hidden bg-[url('/assets/Banner.jpg')] bg-cover bg-center">
+    <div className="relative text-white flex flex-col items-center justify-between gap-5 min-h-[800px] sm:min-h-[600px] lg:min-h-[800px] w-full pt-24 pb-12 px-4 sm:px-6 lg:px-8 overflow-hidden bg-[url('/assets/Banner.jpg')] bg-cover bg-center">
       
       <div 
         className="absolute inset-0 pointer-events-none bg-gradient-to-r from-pink-400 via-purple-400 to-cyan-400 bg-[length:400%400%] mix-blend-screen opacity-40"
@@ -38,18 +39,22 @@ const Banner = () => {
         </p>
 
         <div className="flex flex-wrap gap-4 mt-2 justify-center">
+          <Link href="/all-cats">
           <button className="uppercase font-bold tracking-wider text-xs sm:text-sm bg-slate-900 hover:bg-slate-800 text-white px-6 py-3 rounded-xl shadow-lg transition duration-200 transform hover:-translate-y-0.5 active:scale-95 cursor-pointer">
             Adopt Now 🐾
           </button>
-          
+          </Link>
+
+          <Link href="/add-cat">
           <button className="uppercase font-bold tracking-wider text-xs sm:text-sm bg-slate-200/60 hover:bg-slate-200/80 text-slate-900 backdrop-blur-md px-6 py-3 rounded-xl border border-slate-300 shadow-md transition duration-200 transform hover:-translate-y-0.5 active:scale-95 cursor-pointer">
             List a Pet
           </button>
+          </Link>
         </div>
       </div>
 
       <div className="relative z-10 w-full mt-10 md:mt-16 px-4 sm:px-6 lg:px-8">
-        <div className="bg-white/70 backdrop-blur-xl flex flex-col md:flex-row justify-between gap-4 md:gap-2 w-full items-center p-3 rounded-2xl border border-slate-200 shadow-[0_10px_30px_rgba(0,0,0,0.08)] transition-all duration-300 hover:border-slate-300">
+        <div className="bg-transparent backdrop-blur-xl flex flex-col md:flex-row justify-between gap-4 md:gap-2 w-full items-center p-3 rounded-2xl border border-slate-200 shadow-[0_10px_30px_rgba(0,0,0,0.08)] transition-all duration-300 hover:border-slate-300">
           
           <div className="flex items-center gap-3 px-4 py-2 w-full md:w-auto flex-1 hover:bg-slate-100/80 rounded-xl cursor-pointer transition group">
             <MapPin className="text-pink-500 shrink-0 transform transition-transform group-hover:scale-110" size={20} />
@@ -91,7 +96,7 @@ const Banner = () => {
             <Calendar className="text-cyan-500 shrink-0 transform transition-transform group-hover:scale-110" size={20} />
             <div>
               <h3 className="text-sm font-bold text-slate-800">Age Group</h3>
-              <p className="text-xs text-slate-500 whitespace-nowrap">Puppy, Kitten, Adult</p>
+              <p className="text-xs text-slate-500 whitespace-nowrap">Kitten, Adult</p>
             </div>
           </div>
 

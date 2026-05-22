@@ -14,12 +14,12 @@ const Catcard = ({ data }) => {
     adoptionFee, 
     petImageUrl, 
     species, 
-    healthStatus 
+    healthStatus
   } = data;
 
   return (
 
-    <div className="flex w-full max-w-sm flex-col justify-between overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-md transition-all duration-300 hover:scale-[1.02] hover:border-cyan-500 hover:shadow-xl dark:border-gray-700 dark:bg-gray-800">
+    <div className="flex w-full max-w-sm md:max-w-none flex-col justify-between overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-md transition-all duration-300 hover:scale-[1.02] hover:border-cyan-500 hover:shadow-xl dark:border-gray-700 dark:bg-gray-800">
       
       {/* Top Image Section */}
       <div className="relative h-56 w-full bg-gray-100 dark:bg-gray-900">
@@ -38,7 +38,7 @@ const Catcard = ({ data }) => {
 
         {/* Health Status Tag (Top Right) */}
         <div className={`absolute top-3 right-3 border px-3 py-1 rounded-full text-xs font-semibold backdrop-blur-sm ${
-          healthStatus === 'Healthy' 
+          healthStatus === 'Available' 
             ? 'bg-emerald-500/20 text-emerald-600 border-emerald-500/30' 
             : 'bg-amber-500/20 text-amber-600 border-amber-500/30'
         }`}>

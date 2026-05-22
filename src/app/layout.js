@@ -18,7 +18,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  title: "Cat-10 | Pet Adoption",
+  title: "PetHaven | Pet Adoption",
   description: "Find and adopt your perfect cat companion",
 };
 
