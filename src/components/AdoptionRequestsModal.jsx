@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { Button } from "@heroui/react";
 import { Users, X, Check, XCircle, Clock, Mail, Calendar, MessageSquare, PawPrint } from "lucide-react";
 
 export function AdoptionRequestsModal({ card }) {
