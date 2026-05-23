@@ -87,7 +87,7 @@ export function AdoptionRequestsModal({ card }) {
   return (
     <>
       {/* Trigger Button */}
-      <button
+      <Button
         onClick={handleOpen}
         className="flex items-center justify-center gap-1.5 rounded-lg border border-blue-200 dark:border-blue-900/50 bg-blue-50/50 dark:bg-blue-950/20 px-3 py-2 text-xs font-medium text-blue-600 dark:text-blue-400 hover:bg-blue-100 dark:hover:bg-blue-950/40 transition w-full"
       >
@@ -98,7 +98,7 @@ export function AdoptionRequestsModal({ card }) {
             {pending}
           </span>
         )}
-      </button>
+      </Button>
 
       {/* Modal */}
       {isOpen && (
