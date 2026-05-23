@@ -10,6 +10,7 @@ import { getMyCards } from "../../lib/data";
 import { Eye, Edit3, Users, Trash2, PawPrint } from "lucide-react"; 
 import { DeleteAlert } from "../DeleteAlert";
 import { EditModal } from "../EditModal";
+import { AdoptionRequestsModal } from "../AdoptionRequestsModal";
 
 const MyListingsContent = () => {
   const { data: session , isPending  } = authClient.useSession();
@@ -162,9 +163,7 @@ const MyListingsContent = () => {
                     {/* Edit */}
                     <EditModal card={card} />
 
-                    <button className="flex items-center justify-center gap-1.5 rounded-lg border border-blue-200 dark:border-blue-900/50 bg-blue-50/50 dark:bg-blue-950/20 px-3 py-2 text-xs font-medium text-blue-600 dark:text-blue-400 hover:bg-blue-50 dark:hover:bg-blue-950/40 transition">
-                      <Users size={14} /> Requests
-                    </button>
+                    <AdoptionRequestsModal card={card} />
 
                     {/* delete part */}
                     <DeleteAlert card={card}/>
