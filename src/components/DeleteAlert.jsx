@@ -3,16 +3,22 @@
 import {AlertDialog, Button} from "@heroui/react";
 import { Trash2 } from "lucide-react";
 import { redirect } from "next/navigation";
+import { authClient } from "../lib/auth-client";
+// import { authClient } from "../lib/auth-client";
 
 export function DeleteAlert({card}) {
     const {_id, petName} =  card;
 
     // server a delete api baniye ekeane ese seta connect korchi-
     const handleDelete= async ()=>{
+
+      // secure korba amne client ee jwt
+     const {data: tokenData} = await authClient.token()
      const res = await fetch(`${process.env.NEXT_PUBLIC_BETTER_AUTH_URL}/allCards/${_id}`,{
         method: "DELETE",
         headers:{
-            'content-type': 'application/json'
+            'content-type': 'application/json',
+            authorization: `Bearer ${tokenData?.token}`
         }
      });
      const data = await res.json();

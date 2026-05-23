@@ -1,36 +1,72 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# 🐾 PetHaven - Complete Pet Adoption Platform
 
-## Getting Started
+PetHaven is a modern, responsive full-stack platform designed to simplify pet adoptions. It connects pet lovers with shelters and individual pet owners looking to find permanent homes for dogs, cats, and other pets.
 
-First, run the development server:
+## 🔗 Live Link
+Visit the live site here: **[PetHaven Live Platform](https://cat-10-kx7m.vercel.app/)**
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+---
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## ✨ Key Features
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+### 🔍 For Adopters
+* **Smart Grid Directory:** Browse cats and dogs with real-time updates.
+* **Advanced Filters:** Search by name, filter by species/category, and sort by adoption fees (Lowest to Highest / Highest to Lowest).
+* **Interactive Requests:** Submit adoption requests through a seamless modal, specifying target pickup dates and personal messages.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### 💼 For Pet Owners & Shelters
+* **Full CRUD Management:** Easily Add, View, Update (Patch), and Delete pet listings.
+* **Unified Dashboard:** Track all incoming requests for your listed pets in one place.
+* **Real-time Approval System:** Accept or Reject adoption applications instantly with smooth loading states.
 
-## Learn More
+### ⚙️ Core Technical Capabilities
+* **Secure Authentication:** Social login (Google) and custom email/password setup powered by Better-Auth.
+* **Theme Toggle:** Fully functional Dark and Light mode support.
+* **100% Responsive:** Pixel-perfect design for Mobile, Tablet, and Desktop screens.
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 📦 Tech Stack & Package Manifest
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### 💻 Client Side (Frontend)
+* **Framework:** Next.js (App Router Engine)
+* **Authentication:** better-auth
+* **UI Components:** @heroui/react & @daisyui
+* **Styling Engine:** Tailwind CSS
+* **Notifications:** react-toastify
+* **Icons:** lucide-react & @gravity-ui/icons
 
-## Deploy on Vercel
+### 🗄️ Server Side (Backend)
+* **Runtime & Framework:** Node.js with Express.js
+* **Database:** MongoDB (Native Driver)
+* **Security & Tokens:** jose-cjs & jsonwebtoken (JWKS verification)
+* **Configuration:** cors & dotenv
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+---
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 🛣️ Application & API Routes
+
+| Endpoint / Route | Access | Operational Intent |
+| :--- | :--- | :--- |
+| `/` | Public | Landing hub, site features, and trending pet grids. |
+| `/all-cats` | Public | Full catalog with active filtering, search, and sorting. |
+| `/all-cats/:id` | Private | Detailed pet profiles with adoption request portals. |
+| `/add-cat` | Private | Form to onboard and list new pets. |
+| `/dashboard/my-listings` | Private | Owner panel to manage active listings and view applicant requests. |
+| `/dashboard/my-requests` | Private | Adopter panel to track pending, approved, or rejected applications. |
+| `/login` / `/register` | Public | Secure gateways for user authentication. |
+
+---
+
+## 🚀 Local Installation Guide
+
+### Prerequisites
+Make sure you have **Node.js** and **npm** installed on your system.
+
+### Steps to Run Locally
+1. **Clone the repository:**
+   ```bash
+   git clone [https://github.com/Sajibpurno/CAT-10]
+
+👤 Author:
+Designed and Engineered with 🐾 by Shajib Chanda.

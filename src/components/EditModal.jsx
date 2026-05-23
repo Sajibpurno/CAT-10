@@ -5,6 +5,7 @@ import {Button, FieldError, Input, Label, ListBox, Modal, Surface, TextArea, Tex
 import { Edit3 } from "lucide-react";
 import { authClient } from "../lib/auth-client";
 import { toast } from "react-toastify";
+import { redirect } from "next/navigation";
 
 export function EditModal({card}) {
     const { data: session } = authClient.useSession()
@@ -33,10 +34,14 @@ export function EditModal({card}) {
     // allCards.ownerEmail = user?.email;
     console.log(allCards);
 
+    // secure korba amne client ee jwt
+        const {data: tokenData} = await authClient.token()
+
     const res = await fetch(`${process.env.NEXT_PUBLIC_BETTER_AUTH_URL}/allCards/${_id}`,{
             method: "PATCH",
             headers:{
-                'content-type': 'application/json'
+                'content-type': 'application/json',
+                authorization: `Bearer ${tokenData?.token}`
             },
             body: JSON.stringify(allCards)
          });

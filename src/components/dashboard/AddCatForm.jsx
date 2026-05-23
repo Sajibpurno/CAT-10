@@ -16,7 +16,7 @@ import { toast } from "react-toastify";
 const AddCatForm = () => {
   const { data: session } = authClient.useSession()
     const user = session?.user;
-    console.log("user data", user) 
+    // console.log("user data", user) 
 
   const onSubmit = async (e) => {
     e.preventDefault();
@@ -24,10 +24,15 @@ const AddCatForm = () => {
     const allCards = Object.fromEntries(formData.entries());
     // allCards.ownerEmail = user?.email;
     console.log(allCards);
+    
+    // secure korba amne client ee jwt
+    const {data: tokenData} = await authClient.token()
 
     const res = await fetch(`${process.env.NEXT_PUBLIC_BETTER_AUTH_URL}/allCards`, {
       method: "POST",
-      headers: { "content-type": "application/json" },
+      headers: { "content-type": "application/json",
+                 authorization: `Bearer ${tokenData?.token}`
+              },
       body: JSON.stringify(allCards),
     });
     const data = await res.json();

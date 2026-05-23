@@ -1,8 +1,12 @@
 // import { headers } from "next/headers";
 // import { auth } from "./auth";
 
+import { headers } from "next/headers";
+import { auth } from "./auth";
+
+//server com
 export const getAllCatData = async()=>{
-    const res = await fetch(`${process.env.NEXT_PUBLIC_BETTER_AUTH_URL}/allCards`)
+    const res = await fetch(`${process.env.NEXT_PUBLIC_BETTER_AUTH_URL}/allCards`);
     const data = await res.json();
     console.log(data)
     return data;
@@ -18,14 +22,8 @@ export const getAllCatData = async()=>{
 //     return data;
 // }
 
-// api/data.js e add koro
-export const getMyCards = async (email) => {
-    const res = await fetch(`${process.env.NEXT_PUBLIC_BETTER_AUTH_URL}/myCards?email=${email}`)
-    const data = await res.json();
-    return data;
-}
 
-// NEW: Search, Filter & Sort query API function
+// NEW: Search, Filter & Sort query API function server
 export const getFilteredCatData = async (searchParams) => {
   const search = searchParams?.search || '';
   const species = searchParams?.species || '';
