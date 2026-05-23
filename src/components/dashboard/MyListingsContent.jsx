@@ -47,7 +47,8 @@ const MyListingsContent = () => {
       fetchCards();
     }
   }, [session?.user?.email]);
-
+  
+ 
   const totalListings = myCards.length;
   const availableListings = myCards.filter(card => card.status === 'Available' || !card.status).length;
   const adoptedListings = myCards.filter(card => card.status === 'Adopted').length;
@@ -112,10 +113,11 @@ const MyListingsContent = () => {
                 <p className="text-xs text-gray-500 mb-4">{card.species} • {card.breed}</p>
 
                 <div className="mt-auto grid grid-cols-2 gap-2">
-                  <Link href={`/all-cats/${card._id}`}>
-                    <button className="flex items-center justify-center gap-1.5 rounded-lg border w-full py-2 text-xs">
+
+                  <Link href={`/all-cats/${card._id}`}className='w-full'>
+                    <Button variant="bordered" className="flex  items-center justify-center gap-1.5 rounded-lg border w-full py-2 text-xs">
                       <Eye size={14} /> View
-                    </button>
+                    </Button>
                   </Link>
                   <EditModal card={card} />
                   <AdoptionRequestsModal card={card} />
