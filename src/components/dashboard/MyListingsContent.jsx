@@ -12,12 +12,27 @@ import { DeleteAlert } from "../DeleteAlert";
 import { EditModal } from "../EditModal";
 
 const MyListingsContent = () => {
-  const { data: session } = authClient.useSession();
+  const { data: session , isPending  } = authClient.useSession();
+  console.log(session)
+  
   const [myCards, setMyCards] = useState([]);
 
   useEffect(() => {
-    session?.user?.email && getMyCards(session.user.email).then(setMyCards);
-  }, [session?.user?.email]);
+  if (session?.user?.email) {
+    console.log("Fetching cards for:", session.user.email);
+    
+    getMyCards(session.user.email)
+      .then((data) => {
+        console.log("API Response Data:", data); // এখানে চেক করুন ডেটা আসছে কি না
+        if (data) {
+          setMyCards(data);
+        }
+      })
+      .catch((err) => {
+        console.error("Error fetching cards:", err);
+      });
+  }
+}, [session]);
 
   
   const totalListings = myCards.length;

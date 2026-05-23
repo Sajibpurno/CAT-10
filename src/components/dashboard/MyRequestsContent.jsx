@@ -3,6 +3,8 @@ import { useEffect, useState } from 'react';
 import { FaSearch } from "react-icons/fa";
 import { authClient } from "../../lib/auth-client";
 import Link from 'next/link';
+import { CancleAdoptionRequest } from '../CancleAdoptionRequest';
+import { FadeLoader } from 'react-spinners';
 
 const MyRequestsContent = () => {
   const { data: session } = authClient.useSession();
@@ -39,7 +41,7 @@ const MyRequestsContent = () => {
   if (loading) {
     return (
       <div className="flex h-64 items-center justify-center text-gray-400">
-        <p className="text-lg animate-pulse">Loading requests...</p>
+        <p className="text-lg animate-pulse"><FadeLoader color='#f59e0b '/></p>
       </div>
     );
   }
@@ -147,9 +149,8 @@ const MyRequestsContent = () => {
                     </button>
                     </Link>
 
-                    <button className="inline-flex items-center gap-1 rounded-lg bg-rose-500/10 px-3 py-1.5 text-xs font-semibold text-rose-400 border border-rose-500/20 hover:bg-rose-500 hover:text-white transition duration-150">
-                      Cancel
-                    </button>
+                    <CancleAdoptionRequest item={item} />
+
                   </td>
                 </tr>
               ))}
