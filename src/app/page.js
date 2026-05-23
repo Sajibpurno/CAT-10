@@ -6,6 +6,8 @@ import WhyPetNest from "../components/WhyPetNest";
 import SuccessStories from "../components/SuccessStories";
 import PetCareTips from "../components/PetCareTips";
 
+export const dynamic = 'force-dynamic';
+
 export default function Home() {
   return (
     <div className="">
