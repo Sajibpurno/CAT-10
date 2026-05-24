@@ -12,6 +12,7 @@ const AdoptCard = ({ pet }) => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
     const formFields = Object.fromEntries(formData.entries());
+    // e.currentTarget.reset();
 
     const allAdoptionData = {
       petName: pet?.petName,
@@ -37,7 +38,7 @@ const AdoptCard = ({ pet }) => {
 
       if (data.insertedId) {
         toast.success("Adoption application submitted successfully! 🐾");
-        e.target.reset(); 
+        form.reset(); 
       }
     } catch (error) {
       console.error("Error submitting form:", error);
@@ -113,12 +114,18 @@ const AdoptCard = ({ pet }) => {
       </div>
 
       {/* Adopt Gradient Button */}
-      <button 
+      {user?.email === pet?.ownerEmail ? (
+    <div className="w-full bg-red-500/10 border border-red-500/30 text-red-400 text-sm text-center py-3 rounded-xl">
+        🚫 You cannot adopt your own pet
+    </div>
+) : (
+    <button 
         type="submit" 
         className="w-full bg-gradient-to-r from-yellow-400 to-gray-400 hover:opacity-90 text-white font-bold py-3 px-4 rounded-xl text-sm flex items-center justify-center gap-2 shadow-lg transition duration-200 mt-2"
-      >
+    >
         Adopt {pet?.petName} 🐾
-      </button>
+    </button>
+)}
     </form>
   );
 };

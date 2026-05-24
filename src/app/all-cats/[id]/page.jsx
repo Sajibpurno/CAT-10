@@ -34,6 +34,7 @@ const CardDetailsPage = async ({ params }) => {
     vaccinated: SingleCard?.vaccinationStatus ,
     about: SingleCard?.description ,
     image: SingleCard?.petImageUrl ,
+    ownerEmail: SingleCard?.ownerEmail,
   };
 
   return (
